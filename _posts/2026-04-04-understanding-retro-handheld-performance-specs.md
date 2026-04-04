@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Understanding Retro Handheld Performance Specs"
-date: 2026-04-01
+date: 2026-04-04
 description: "A guide to understanding SoC specs, CPU cores, clock speeds, and what actually matters for retro gaming performance on handheld consoles."
 tags: [hardware, performance, guide]
 ---

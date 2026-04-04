@@ -11,7 +11,9 @@ author:
 
 permalink: /:year/:month/:day/:title/
 
-collections_dir: .
+
+theme: null
+future: true
 
 markdown: kramdown
 highlighter: rouge

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Name Game Files for Emulators"
-date: 2026-04-03
+date: 2026-04-05
 description: "Best practices for naming ROM files so emulators can properly identify games, scrape metadata, and display box art."
 tags: [emulation, guide, tips]
 ---
