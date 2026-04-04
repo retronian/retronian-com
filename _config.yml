@@ -1,0 +1,47 @@
+title: Retronian
+tagline: "One OS, All Handhelds."
+description: "Retro gaming, handheld game consoles, custom OS, and 3D printed accessories."
+url: "https://retronian.com"
+baseurl: ""
+lang: en
+
+author:
+  name: Retronian
+  url: https://retronian.com
+
+permalink: /:year/:month/:day/:title/
+
+collections_dir: .
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Social
+github_username: komagata
+youtube_url: https://www.youtube.com/@retronian
+note_url: https://note.com/retronian

@@ -1,0 +1,20 @@
+---
+layout: default
+title: Blog
+---
+<section class="blog-index">
+  <h2 class="section-title">&gt; ALL_POSTS</h2>
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li class="post-card">
+      <a href="{{ post.url | relative_url }}">
+        <h3 class="post-card-title">{{ post.title }}</h3>
+        <div class="post-card-meta">{{ post.date | date: "%Y.%m.%d" }}</div>
+        {% if post.excerpt %}
+        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

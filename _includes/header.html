@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ '/' | relative_url }}" class="site-logo">
+      <span class="logo-icon">👾</span>
+      <span class="logo-text">{{ site.title }}</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
+      <a href="{{ '/blog/' | relative_url }}" {% if page.url == '/blog/' %}class="active"{% endif %}>Blog</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
+    </nav>
+  </div>
+</header>
