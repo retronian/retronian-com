@@ -1,69 +1,80 @@
 ---
 layout: post
-title: "Understanding Retro Handheld Performance Specs"
+title: "How to Read Retro Handheld Performance Specs"
 date: 2026-04-04
-description: "A guide to understanding SoC specs, CPU cores, clock speeds, and what actually matters for retro gaming performance on handheld consoles."
+description: "A quick guide to making sense of confusing retro handheld spec sheets like 'Allwinner H700 Quad-core ARM Cortex-A53 1.5GHz'."
 tags: [hardware, performance, guide]
 ---
 
-When shopping for a retro gaming handheld, you'll encounter a wall of specs: SoC names, CPU core counts, clock speeds, GPU types, and RAM amounts. But what do they actually mean for your gaming experience? Let's break it down.
+"Allwinner H700 Quad-core ARM Cortex-A53 1.5GHz", "SigmaStar SSD202D Dual-core ARM Cortex-A7 1.2GHz" — the specs of retro handheld game consoles are confusing, aren't they? Let me try to explain what they mean.
 
-## What is an SoC?
+## Manufacturer, SoC, CPU Core
 
-**SoC** stands for **System on a Chip**. Unlike desktop PCs where the CPU, GPU, and memory controller are separate components, an SoC integrates all of these into a single chip. This is what makes handheld devices possible — everything is compact and power-efficient.
+Take "Allwinner H700 Quad-core ARM Cortex-A53 1.5GHz" as an example. It breaks down like this:
 
-Common SoCs you'll see in retro handhelds:
+- **Allwinner** — manufacturer
+- **H700** — SoC
+- **Quad-core** — number of CPU cores
+- **ARM Cortex-A53** — CPU core
+- **1.5GHz** — clock speed
 
-| SoC | CPU | GPU | Typical Use |
-|-----|-----|-----|-------------|
-| Allwinner H700 | 4× Cortex-A53 @ 1.5GHz | Mali-G31 MP2 | PS1, N64, some PSP |
-| Rockchip RK3566 | 4× Cortex-A55 @ 1.8GHz | Mali-G52 EE | PSP, Dreamcast, some Saturn |
-| Unisoc T820 | 4× Cortex-A76 + 4× A55 | Mali-G57 MC4 | GameCube, Wii, some PS2 |
+## Manufacturer
 
-## CPU Cores: More Isn't Always Better
+Simply the company that makes the chip.
 
-You'll often see "quad-core" or "octa-core" in marketing materials. Here's the thing: **most emulators are single-threaded or use 2-3 threads at most**. Having 8 cores doesn't help if the emulator can only use 2.
+Major manufacturers:
 
-What matters more:
+- **Allwinner**: Cheap. Frequently used in the Anbernic XX series.
+- **Rockchip**: The standard choice for mid-range and higher.
+- **UNISOC**: Relatively new, high-performance.
+- **MediaTek**: Smartphone class.
+- **SigmaStar**: Ultra low power. Used in the Miyoo Mini family.
 
-- **Single-core performance** — This is king for emulation
-- **Clock speed** — Higher is generally better (within the same architecture)
-- **CPU architecture generation** — A Cortex-A76 at 1.8GHz crushes a Cortex-A53 at 2.0GHz
+## SoC (System on a Chip)
 
-### The Architecture Hierarchy
+A single chip that combines the CPU, GPU, memory controller, power management, and so on.
 
-From weakest to strongest in the ARM Cortex-A series commonly found in handhelds:
+Major SoCs and the devices they're in:
 
-```
-Cortex-A7  → Cortex-A53 → Cortex-A55 → Cortex-A73 → Cortex-A75 → Cortex-A76 → Cortex-A78
-```
+- **H700**: RG35XX series
+- **A33**: Miyoo A30
+- **RK3326**: RG351 / RGB20S
+- **RK3566**: RG353 / RGB30
+- **RK3399**: RG552
+- **T820**: RG556 and others
+- **SSD202D**: Miyoo Mini
 
-Each generation brings significant IPC (Instructions Per Clock) improvements. A Cortex-A76 can be **2-3× faster per clock** than a Cortex-A53.
+## Number of CPU Cores
 
-## GPU: The Overlooked Factor
+Literally the number of cores.
 
-For systems up to PS1/N64, the GPU barely matters — the CPU handles most of the work through software rendering. But once you get into PSP, Dreamcast, GameCube, and beyond, **GPU power becomes critical**.
+- Dual-core: 2
+- Quad-core: 4
+- Octa-core: 8
 
-Key GPU specs to look for:
+## CPU Core
 
-- **Architecture** — Mali-G52 and G57 are significantly better than G31
-- **Execution Engine count** — More EEs = more parallel processing
-- **OpenGL ES / Vulkan support** — Vulkan support can dramatically improve performance in some emulators
+This lives inside the SoC. These are almost all designs from ARM.
 
-## RAM: Usually Not the Bottleneck
+Major CPU cores (higher numbers are stronger):
 
-Most modern handhelds come with 1-4GB of RAM. For retro emulation, **1GB is sufficient for everything up to PSP/Dreamcast**. More RAM helps with:
+- Cortex-A7
+- Cortex-A35
+- Cortex-A53
+- Cortex-A55
+- Cortex-A72
+- Cortex-A76
 
-- Running Android-based systems (which are memory-hungry)
-- Keeping save states and textures cached
-- Multitasking between emulators and file managers
+## Clock Speed
 
-## Real-World Performance Matters Most
+How fast the CPU runs. Basically, retro handhelds with the same CPU core tend to have the same clock speed, but apparently manufacturers sometimes overclock it through their settings, or intentionally lower it for better power efficiency.
 
-Specs on paper don't tell the whole story. Thermal throttling, software optimization, and driver quality all play major roles. A device with a slightly weaker SoC but excellent thermal design and well-optimized firmware can outperform a "better" device that throttles under load.
+## So What Should You Actually Look At?
 
-**Our recommendation:** Look at real gameplay videos and benchmarks rather than spec sheets. The retro handheld community is great at testing actual game compatibility.
+As long as the SoC is the same, the other pieces are basically fixed. So if you know "this device uses the H700" or "it has an SSD202D", you already know most of what there is to know about its performance.
 
----
+Snapdragon, which shows up often in Android-based devices, has its own separate flavor of complexity — I'll save that for another time.
 
-*This is an evolving guide. We'll update it as new SoCs and devices enter the market.*
+## Bonus: What's the Difference Between an SoC (System on a Chip) and an SBC (Single Board Computer)?
+
+An SoC is where the main functions are packed into a single chip. An SBC is where all the various things a computer needs (including the chips) are arranged on a single board.

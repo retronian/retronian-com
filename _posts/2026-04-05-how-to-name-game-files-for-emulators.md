@@ -1,121 +1,50 @@
 ---
 layout: post
-title: "How to Name Game Files for Emulators"
+title: "What's the Best Way to Name Game Files for Emulators?"
 date: 2026-04-05
-description: "Best practices for naming ROM files so emulators can properly identify games, scrape metadata, and display box art."
+description: "The Official No-Intro Convention is the de facto standard for naming ROM files used across emulator communities like RetroArch."
 tags: [emulation, guide, tips]
 ---
 
-One of the most common frustrations with retro gaming handhelds is getting your game library organized. You've dumped your ROMs, but they show up as cryptic filenames with no box art and no metadata. The fix? **Proper file naming.**
+**Conclusion:** Follow [The Official No-Intro Convention](https://datomatic.no-intro.org/stuff/The%20Official%20No-Intro%20Convention%20(20071030).pdf).
 
-## Why File Names Matter
+There's a project called [No-Intro](https://no-intro.org/) that catalogs digital games and provides databases, and the document linked above comes from them.
 
-Most emulator frontends (EmulationStation, RetroArch playlists, Daijishō, etc.) rely on file names to:
+It's the standard naming convention across various emulator-related communities, starting with RetroArch. Following it makes it easier for programs that automatically assign things like box art to identify your games, so sticking to it is probably the safe choice.
 
-1. **Display game titles** in the UI
-2. **Scrape metadata** (descriptions, release dates, genres)
-3. **Download box art and screenshots** automatically
-4. **Match games to the correct emulator core**
+Here's a rough summary of what it says.
 
-If your files are named `game123.zip` or `ゼルダの伝説 (J) [!].nes`, the scraper will struggle.
+## ROM File Naming Convention
 
-## The No-Archive Standard
+- Only 7-bit ASCII characters are allowed.
+  - a–z
+  - A–Z
+  - 0–9
+  - space
+  - `$ ! # % ' ( ) + , - . ; = @ [ ] ^ _ { } ~`
+- The following ASCII characters cannot be used:
+  - `\ / : * ? " < > | ` + "`"
+- Filenames cannot begin with a space or `.`
+- Generally, proper nouns, adjectives, and verbs are all capitalized.
+- Articles and conjunctions are lowercased, except at the start of the title.
+  - Examples:
+    - Adventure of the Hero
+    - Riding in a Car
+    - Travel from Earth to the Moon
+    - From Earth...
+    - Into the Darkness...
+- Writing the entire title in uppercase should be avoided as much as possible, unless it's an acronym.
+- If the first word is a common article, it is moved to the end of the main title and separated by a comma. (Retronian's note: "Seriously?")
+  - Example 1: The Legend of Zelda → Legend of Zelda, The
+  - Example 2: A Man Born in Hell → Man Born in Hell, A
+- Subtitles and pre-titles are always separated from the main title by a hyphen " - ". Titles that use other separators (for example colons or "~ subtitle ~" style) are converted to the hyphen style.
+  - Example 1: Castlevania II - Belmont's Revenge
+  - Example 2: Double Dragon - The Ultimate Team
+  - Example 3: Legend of Zelda, The - A Link to the Past
+- **Japanese characters should be romanized using the Hepburn system.**
 
-The most widely supported naming convention follows the **No-Intro** database naming standard:
+## Things That Caught My Eye
 
-```
-Game Title (Region) [optional flags].extension
-```
+The Legend of Zelda → Legend of Zelda, The — this one is hard to believe.
 
-### Examples
-
-```
-Super Mario Bros. (USA).nes
-Legend of Zelda, The - A Link to the Past (USA).sfc
-Sonic the Hedgehog (Japan, USA).md
-Pokemon - Fire Red Version (USA, Europe) (Rev 1).gba
-```
-
-### Key Rules
-
-- **Use the full English title** — Don't abbreviate
-- **Region in parentheses** — `(USA)`, `(Japan)`, `(Europe)`, `(World)`
-- **Revision in parentheses** — `(Rev 1)`, `(Rev 2)` if applicable
-- **Articles go after comma** — "Legend of Zelda, The" not "The Legend of Zelda"
-- **No special characters** that your filesystem can't handle
-
-## Organizing by System
-
-Keep your ROMs in clearly named directories matching the system:
-
-```
-/roms/
-├── nes/
-│   ├── Super Mario Bros. (USA).nes
-│   └── Mega Man 2 (USA).nes
-├── snes/
-│   ├── Super Mario World (USA).sfc
-│   └── Chrono Trigger (USA).sfc
-├── gba/
-│   ├── Pokemon - Emerald Version (USA, Europe).gba
-│   └── Metroid - Zero Mission (USA).gba
-└── psp/
-    ├── Monster Hunter Freedom Unite (USA).iso
-    └── Final Fantasy VII - Crisis Core (USA).iso
-```
-
-## Handling Multi-Disc Games
-
-For systems like PS1 where games span multiple discs, use an `.m3u` playlist file:
-
-```
-# Final Fantasy VII.m3u
-Final Fantasy VII (USA) (Disc 1).chd
-Final Fantasy VII (USA) (Disc 2).chd
-Final Fantasy VII (USA) (Disc 3).chd
-```
-
-The `.m3u` file should be in the same directory as the disc images. Point your emulator at the `.m3u` file, and it will handle disc swapping automatically.
-
-## CHD: The Modern Choice
-
-If you're using CD-based systems (PS1, Dreamcast, Saturn, PSP), convert your ISOs/BIN+CUE files to **CHD (Compressed Hunks of Data)** format:
-
-```bash
-chdman createcd -i game.cue -o game.chd
-```
-
-Benefits of CHD:
-
-- **Significantly smaller** file sizes (40-60% compression)
-- **Single file** per disc (no more BIN + CUE pairs)
-- **Lossless** — no quality loss
-- **Widely supported** by RetroArch and standalone emulators
-
-## Quick Rename Tips
-
-If you have a large library to rename, these tools can help:
-
-- **Romcenter** or **clrmamepro** — Match and rename against No-Intro DATs
-- **Bulk Rename Utility** (Windows) — Pattern-based renaming
-- **rename** command (Linux/macOS) — `rename 's/\[!\]//' *.nes` to strip flags
-
-### A Simple Script
-
-For a quick cleanup on Linux/macOS:
-
-```bash
-# Remove common junk tags from filenames
-for f in *.nes; do
-  new=$(echo "$f" | sed 's/ \[!\]//g; s/ \[o[0-9]*\]//g; s/ \[b[0-9]*\]//g')
-  [ "$f" != "$new" ] && mv "$f" "$new"
-done
-```
-
-## The Payoff
-
-Once your files are properly named, scraping becomes automatic. Fire up your frontend's scraper, point it at ScreenScraper or TheGamesDB, and watch as box art, descriptions, and metadata populate your library. It transforms your handheld from a file browser into a proper game console experience.
-
----
-
-*Taking the time to organize your library upfront saves hours of frustration later. Trust us on this one.*
+And, obviously, you can't use Japanese characters in filenames. The hyphen style for subtitles is a good thing to keep in mind.
