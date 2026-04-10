@@ -1,0 +1,44 @@
+name: Translate new note.com posts
+
+on:
+  schedule:
+    # Every day at 00:00 UTC (09:00 JST)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: translate-note-posts
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install 'anthropic>=0.40,<1.0'
+
+      - name: Run translator
+        id: translate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/translate_note_posts.py
+
+      - name: Commit and push new posts
+        if: steps.translate.outputs.created != ''
+        run: |
+          git config user.name "retronian-bot"
+          git config user.email "bot@retronian.com"
+          git add _posts/
+          git commit -m "Auto-translate new note.com post(s): ${{ steps.translate.outputs.created }}"
+          git push

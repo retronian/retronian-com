@@ -4,6 +4,8 @@ title: "What's the Best Way to Name Game Files for Emulators?"
 date: 2026-04-05
 description: "The Official No-Intro Convention is the de facto standard for naming ROM files used across emulator communities like RetroArch."
 tags: [emulation, guide, tips]
+note_key: n5080fb137ef9
+source_url: https://note.com/retronian/n/n5080fb137ef9
 ---
 
 **Conclusion:** Follow [The Official No-Intro Convention](https://datomatic.no-intro.org/stuff/The%20Official%20No-Intro%20Convention%20(20071030).pdf).
@@ -45,6 +47,6 @@ Here's a rough summary of what it says.
 
 ## Things That Caught My Eye
 
-The Legend of Zelda → Legend of Zelda, The — this one is hard to believe.
+The Legend of Zelda → Legend of Zelda, The — seriously, for real?
 
 And, obviously, you can't use Japanese characters in filenames. The hyphen style for subtitles is a good thing to keep in mind.

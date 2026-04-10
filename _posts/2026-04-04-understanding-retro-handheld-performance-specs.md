@@ -4,6 +4,8 @@ title: "How to Read Retro Handheld Performance Specs"
 date: 2026-04-04
 description: "A quick guide to making sense of confusing retro handheld spec sheets like 'Allwinner H700 Quad-core ARM Cortex-A53 1.5GHz'."
 tags: [hardware, performance, guide]
+note_key: ne863003aa8d7
+source_url: https://note.com/retronian/n/ne863003aa8d7
 ---
 
 "Allwinner H700 Quad-core ARM Cortex-A53 1.5GHz", "SigmaStar SSD202D Dual-core ARM Cortex-A7 1.2GHz" — the specs of retro handheld game consoles are confusing, aren't they? Let me try to explain what they mean.
