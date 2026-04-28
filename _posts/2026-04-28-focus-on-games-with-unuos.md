@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Focus on Games with UnuOS"
-date: 2026-04-28
+date: 2026-04-28 11:19:28 +0900
 description: "UnuOS now supports Game Focus Mode, showing only the games you selected and hiding everything else."
 tags: [unuos, minui, retro-handheld, game-focus-mode, collections]
 note_key: n11a24b89df38
