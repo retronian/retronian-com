@@ -18,7 +18,7 @@ Let's just focus on the games.
 
 When you boot the device, the only things shown on screen are the games you selected. No settings or anything else unnecessary.
 
-![Game Focus Mode](https://assets.st-note.com/img/1777342713-7ad8CBrvUo0mWNTPYDXpSLRb.png)
+![Game Focus Mode](/assets/images/game-focus-en.png)
 *Game Focus Mode*
 
 It's like the **Flavor Concentration Booth** at Ichiran ramen. On a game console, let's focus only on games.
