@@ -8,6 +8,9 @@ note_key: n11a24b89df38
 source_url: https://note.com/retronian/n/n11a24b89df38
 ---
 
+![Ichiran Flavor Concentration Booth](/assets/images/img_malaysia01.jpg)
+*Ichiran Flavor Concentration Booth*
+
 Retro handheld fans, are you overwhelmed by a huge number of retro games?
 
 Do you just want to relax with nostalgic games, but find yourself worn out by managing tons of games and configuring all kinds of emulators?
